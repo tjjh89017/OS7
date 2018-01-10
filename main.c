@@ -18,7 +18,7 @@ int main(){
 	gettimeofday(&start, NULL);
 
 	// produce largefile.txt >= 400KiB
-	int fd = open("largefile.txt", O_RDWR | O_CREAT | O_LARGEFILE);
+	int fd = open("largefile.txt", O_RDWR | O_CREAT | O_LARGEFILE, 0666);
 
 	posix_fallocate(fd, 0, 1600 * 1024);
 
