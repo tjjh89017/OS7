@@ -20,9 +20,9 @@ int main(){
 	// produce largefile.txt >= 400KiB
 	int fd = open("largefile.txt", O_RDWR | O_CREAT | O_LARGEFILE, 0666);
 
-	posix_fallocate(fd, 0, 1600 * 1024);
+	posix_fallocate(fd, 0, 1024 * 1024);
 
-	for(int i = 0; i < 1600; i += 2){
+	for(int i = 0; i < 1024; i += 1){
 		fallocate(fd, FALLOC_FL_COLLAPSE_RANGE, i * 1024, 1024);
 	}
 

@@ -24,6 +24,8 @@ real-test: $(PROG) pre-test
 	sudo chmod 777 -R $(DIR)
 	cp $(PROG) $(DIR)
 	cd $(DIR) && ./$(PROG)
+	ls -l $(DIR)/largefile.txt
+	du -b $(DIR)/largefile.txt
 	e2freefrag a.img
 
 .PHONY: pre-test
