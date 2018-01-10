@@ -1,12 +1,10 @@
+#define _GNU_SOURCE
+#define __USE_LARGEFILE64
 #include <stdio.h>
 #include <stdlib.h>
 
-#define _GNU_SOURCE
-#define __USE_LARGEFILE64
 #include <fcntl.h>
 #include <sys/time.h>
-
-#define FALLOC_FL_COLLAPSE_RANGE 8
 
 char junk[1024] = {'\0'};
 
@@ -22,7 +20,7 @@ int main(){
 
 	posix_fallocate(fd, 0, 1024 * 1024);
 
-	for(int i = 0; i < 1024; i += 1){
+	for(int i = 0; i < 512; i++){
 		fallocate(fd, FALLOC_FL_COLLAPSE_RANGE, i * 1024, 1024);
 	}
 
